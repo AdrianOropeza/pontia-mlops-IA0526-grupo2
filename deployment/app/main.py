@@ -130,7 +130,11 @@ async def lifespan(app: FastAPI):
     load_model_artifacts()
     yield
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+                title="API grupo 02 Pontia DevOps",
+                description="Esta API permite realizar predicciones de ingresos utilizando un modelo de machine learning previamente entrenado y desplegado.",
+                version="1.0.0"
+)
 
 @app.get("/health")
 def health():
