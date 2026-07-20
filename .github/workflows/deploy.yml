@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  CONTAINER_APP_NAME: ca-ml-api-grupo2
+  CONTAINER_APP_NAME: ca-ml-api-grupo02
   RESOURCE_GROUP: rg-gcortina-devops
   REGION: spaincentral
 
