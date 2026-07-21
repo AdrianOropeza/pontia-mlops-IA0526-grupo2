@@ -8,3 +8,4 @@ azure-identity
 pytest~=8.3.5
 numpy~=2.2.6
 pytest-cov
+fastapi[standard]
