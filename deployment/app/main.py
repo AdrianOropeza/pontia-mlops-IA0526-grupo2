@@ -7,6 +7,7 @@ import time
 import logging
 from fastapi.responses import PlainTextResponse
 import joblib
+from app.version import __version__
 from azure.identity import ClientSecretCredential
 from pydantic import BaseModel, Field
 
@@ -133,13 +134,14 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
                 title="API grupo 02 Pontia DevOps",
                 description="Esta API permite realizar predicciones de ingresos utilizando un modelo de machine learning previamente entrenado y desplegado.",
-                version="1.0.0"
+                version=__version__
 )
 
 @app.get("/health")
 def health():
     return {
-        "status": "ok", 
+        "status": "ok",
+        "api_version": __version__,
         "worker_state": model_loading_status,
         "model_loaded": (model_loading_status == "ready")
     }

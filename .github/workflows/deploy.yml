@@ -27,7 +27,12 @@ jobs:
       - name: Build and push Docker image
         run: |
           IMAGE_NAME="${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}"
-          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:${{ github.run_number }} -f ./deployment/Dockerfile .
+          API_VERSION=$(git describe --tags --always 2>/dev/null || echo "0.0.${{ github.run_number }}")
+          docker build \
+            --build-arg API_VERSION=$API_VERSION \
+            -t $IMAGE_NAME:latest \
+            -t $IMAGE_NAME:${{ github.run_number }} \
+            -f ./deployment/Dockerfile .
           docker push $IMAGE_NAME:latest
           docker push $IMAGE_NAME:${{ github.run_number }}
 
