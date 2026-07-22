@@ -132,6 +132,7 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(
+        lifespan=lifespan,
                 title="API grupo 02 Pontia DevOps",
                 description="Esta API permite realizar predicciones de ingresos utilizando un modelo de machine learning previamente entrenado y desplegado.",
                 version=__version__
